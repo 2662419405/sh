@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import store from './store/index';
+import store from './redux/index';
 import { Provider } from 'react-redux';
-import './axios';
+import './config'; //axios拦截器
+import Router from './router'
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><Router /></Provider>, document.getElementById('root'));
