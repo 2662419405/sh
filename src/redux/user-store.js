@@ -1,25 +1,22 @@
-
 const defaultValue = {
+    redirectTo:'',
     msg: '',
     isLogin: false,
-    name: '',
+    user: '',
     pwd: '',
-    repeatpwd: '',
     type: ''
 }
 
 export default ( state = defaultValue, actions )=>{
     switch (actions.type) {
         case 'addUser':
-            const { name,pwd,repeatpwd } = {...actions.value};
-            let message = '';
-            if(!name||!pwd||!repeatpwd){
-                message = '请正确填写信息'
-            }
-            if(pwd!==repeatpwd){
-                message = '两次密码不一致'
-            }
-            return {...state,...actions.value,msg:message}
+            return {...state,...actions.value}
+        case 'login':
+            return {...state,...actions.value}
+        case 'cookie':
+            return {...state,...actions.value}
+        case 'update_success':
+            return {...state,...actions.value}
         default:
             return state;
     }

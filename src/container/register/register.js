@@ -3,13 +3,15 @@ import Logo from '../../components/logo/logo'
 import { InputItem, List, Radio, WhiteSpace , Button } from 'antd-mobile'
 import './style.css'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import { register } from '../../redux/createActions'
 
 class Register extends Component{
 
     constructor(props){
         super(props);
         this.state = {
-            name:'',
+            user:'',
             pwd:'',
             repeatpwd:'',
             type:'genius'
@@ -24,16 +26,19 @@ class Register extends Component{
 
     render(){
 
-        const { msg } = this.props;
+        let { msg,redirectTo } = this.props;
         const RadioItem = Radio.RadioItem; 
 
         return(
             <Fragment>
+                {
+                    redirectTo ? <Redirect to={redirectTo}/> : null
+                }
                 <Logo />
                 <p className="msg">{msg}</p>
                 <List>
                     <InputItem
-                        onChange={v=>this.handleChange('name',v)}
+                        onChange={v=>this.handleChange('user',v)}
                     >用户名</InputItem>
                     <WhiteSpace />
                     <InputItem
@@ -71,17 +76,15 @@ class Register extends Component{
 const mapDispatchToProps = dispatch =>{
     return {
         handleRegisterValue(val){
-            dispatch({
-                type: 'addUser',
-                value: val
-            })
+            dispatch(register(val))
         }
     }
 }
 
 const mapStateToProps = state =>{
     return {
-        msg: state.User.msg
+        msg: state.User.msg,
+        redirectTo: state.User.redirectTo
     }
 }
 

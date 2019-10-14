@@ -1,8 +1,10 @@
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import React, { Component,Fragment } from 'react'
 import Login from './container/login/login'
 import Register from './container/register/register'
 import AutoRouter from './components/autoRouter/index'
+import BossInfo from './container/bossinfo/index'
+import GenuisInfo from './container/geniusinfo/geniusinfo'
 
 class Router extends Component{
 
@@ -12,8 +14,12 @@ class Router extends Component{
                 <Fragment>
                     {/* {验证是否登录,是牛人还是BOSS} */}
                     <AutoRouter />
-                    <Route path='/login' component={Login}></Route>
-                    <Route path='/register' component={Register}></Route>
+                    <Switch>
+                        <Route path='/geniusinfo' component={GenuisInfo} />
+                        <Route path='/bossinfo' component={BossInfo} />
+                        <Route path='/login' component={Login}></Route>
+                        <Route path='/register' component={Register}></Route>
+                    </Switch>
                 </Fragment>
             </BrowserRouter>
         )
