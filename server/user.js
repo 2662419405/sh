@@ -53,8 +53,11 @@ Router.post('/register',(req,res)=>{
 
 //获取用户列表
 Router.get('/list',(req,res)=>{ 
-    User.find({},(err,doc)=>{
-        res.json(doc)
+
+    const { type } = req.query
+
+    User.find({type},(err,doc)=>{
+        res.json({code:0,data:doc})
     })
 })
 

@@ -5,6 +5,7 @@ import Register from './container/register/register'
 import AutoRouter from './components/autoRouter/index'
 import BossInfo from './container/bossinfo/index'
 import GenuisInfo from './container/geniusinfo/geniusinfo'
+import Dashboard from './components/Dashboard/Dashboard'
 
 class Router extends Component{
 
@@ -19,6 +20,7 @@ class Router extends Component{
                         <Route path='/bossinfo' component={BossInfo} />
                         <Route path='/login' component={Login}></Route>
                         <Route path='/register' component={Register}></Route>
+                        <Route component={Dashboard}></Route>
                     </Switch>
                 </Fragment>
             </BrowserRouter>

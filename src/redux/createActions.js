@@ -51,9 +51,10 @@ export function getLogin(val){
                     dispatch({
                         type: 'login',
                         value: {
-                            isLogin:true,
+                            ...res.data.data,
+                            redirectTo:getDirectPath({type:res.data.data.type,avatar:res.data.data.avatar}),
                             msg:'',
-                            redirectTo:getDirectPath({type:res.data.data.type,avatar:null})
+                            isLogin:true
                         }
                     })
                 }else{

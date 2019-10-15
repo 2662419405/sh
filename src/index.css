@@ -179,3 +179,25 @@ body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, button,
     .clearfix{
     zoom:1;
     }
+
+    .am-tab-bar{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    .fixed-header.am-navbar{
+        position: fixed;
+        top:0;
+        width: 100%;
+    }
+    .page-content{
+        padding: 45px 5px;
+    }
+
+    .content{
+        margin-top: 45px;
+    }
+
+    .am-card-header-content img{
+        height: auto!important;
+    }
