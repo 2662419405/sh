@@ -6,7 +6,7 @@ import UserCard from '../userCard/userCard'
 class boss extends Component {
 
     componentWillMount(){
-        this.props.getDefault('boss')
+        this.props.getDefault('genius')
     }
 
     render() {

@@ -17,6 +17,8 @@ export default ( state = defaultValue, actions )=>{
             return {...state,...actions.value}
         case 'update_success':
             return {...state,...actions.value}
+        case 'logout':
+            return {...defaultValue,redirectTo:'/login'}
         default:
             return state;
     }

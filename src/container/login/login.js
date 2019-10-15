@@ -4,22 +4,9 @@ import { Button, List, InputItem, WingBlank, WhiteSpace } from 'antd-mobile'
 import { connect } from 'react-redux'
 import { getLogin } from '../../redux/createActions'
 import { Redirect } from 'react-router-dom'
+import shForm from '../../components/shForm/shForm'
 
 class Login extends Component{
-
-    constructor(props){
-        super(props);
-        this.state = {
-            user:'',
-            pwd:''
-        }
-    }
-
-    handleChange = (key,val)=>{
-        this.setState({
-            [key]:val
-        })
-    }
 
     render(){
 
@@ -34,17 +21,17 @@ class Login extends Component{
                 <p style={{color:'red',textAlign:'center'}}>{msg}</p>
                 <List>
                     <InputItem
-                        onChange={v=>this.handleChange('user',v)}
+                        onChange={v=>this.props.handleChange('user',v)}
                     >用户名</InputItem>
                     <WhiteSpace />
                     <InputItem
-                        onChange={v=>this.handleChange('pwd',v)}
+                        onChange={v=>this.props.handleChange('pwd',v)}
                     type="password">密码</InputItem>
                 </List>
                 <WhiteSpace />
                 <WingBlank>
                     <Button
-                        onClick={()=>{handlerLogin(this.state)}}
+                        onClick={()=>{handlerLogin(this.props.state)}}
                     type="primary">登录</Button>
                     <WhiteSpace />
                     <Button
@@ -76,4 +63,4 @@ const mapStateToProps = state =>{
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Login);
+export default shForm(connect(mapStateToProps,mapDispatchToProps)(Login));

@@ -4,17 +4,11 @@ import { NavBar } from 'antd-mobile'
 import NavLinkBar from '../navlink/navlink'
 import { Switch,Route } from 'react-router-dom'
 import Boss from '../boss/boss'
-
-function Genius(){
-    return <h2>牛人</h2>
-}
+import Genius from '../genius/genius'
+import User from '../user/user'
 
 function Msg(){
     return <h2>msg</h2>
-}
-
-function User(){
-    return <h2>消息</h2> 
 }
 
 class Dashboard extends Component {

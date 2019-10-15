@@ -37,19 +37,30 @@
 
 发现前端很神奇,比后台和数据方面更加的有意思,想要称为一名前端工程师
 
-### 安装
+### 项目简述
 
 > 这是一个React项目,你的电脑要具备Node(8.0)以上
-* 里面已经配置安装`antd-mobile`按需加载
-* 由于跨域问题 这里我们使用`proxy`配置
+#### 所使用的node包文件的阐述
+* **(按需加载问题)** 使用`babel-plugin-import`包
+* **(由于跨域问题)** 在`package.json`中使用`proxy`配置
+* **(关于密码加密问题)** 使用`utility`包
+* **(关于cookie存储方面的问题)** 使用`browser-cookies`包
+* **(方面node中获取请求的数据)** 使用`body-parser`包
+* **(在React中发送请求)** 使用`axios`包
+* **(加强react中组件之间的通信类型)** 使用`prop-types`包
+* **(React和Redux之间的数据通信)** 使用`react-redux`包
+* **(React中的路由配置)** 使用`react-router`包
 
-#### 数据库方向
+### 数据库方向
 
 - 由于本人主要是面向前端,数据库就是`MongoDB`
 - 数据库的使用请参照`data`目录下面的`mongodb.md`
+* 数据库方面使用 **(mongoose)**
 
-#### 后台方向
+### 后台方向
 
 - 后台主要使用`node`的`express`
 
 * 后台文件在`server`
+
+### 关于使用

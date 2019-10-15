@@ -29,6 +29,11 @@ export function getCookie(val){
     }
 }
 
+//注销登录
+export function logoutSubmit(){
+	return { type:'logout' }
+}
+
 //登录的dispatch
 export function getLogin(val){
     let message = '';

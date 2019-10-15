@@ -201,3 +201,7 @@ body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, button,
     .am-card-header-content img{
         height: auto!important;
     }
+
+    .am-tab-bar{
+        height: auto!important;
+    }
