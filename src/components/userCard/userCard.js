@@ -5,15 +5,23 @@ import {
     WingBlank,
     Card
 } from 'antd-mobile'
+import { withRouter } from 'react-router-dom'
 
 class UserCard extends Component {
+
+    handleClick(v){
+        this.props.history.push(`/chat/${v._id}`)
+    }
+
     render() {
         const { Header,Body } = Card
         return (
             <WingBlank>
                 {
                     this.props.userData.map(v=>(
-                        v.avatar?(<Card key={v._id}>
+                        v.avatar?(<Card
+                            onClick = { ()=>this.handleClick(v) }
+                        key={v._id}>
                             <Header
                                 title={v.user}
                                 thumb={require(`../img/${v.avatar}.png`)}
@@ -38,4 +46,4 @@ class UserCard extends Component {
     }
 }
 
-export default UserCard
+export default withRouter(UserCard)

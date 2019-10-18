@@ -7,3 +7,7 @@ export function getDirectPath({type,avatar}){
     }
     return url;
 }
+
+export function getChatId(userId,targetID){
+    return [userId,targetID].sort().join('_')
+}

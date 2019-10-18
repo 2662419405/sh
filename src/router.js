@@ -6,6 +6,7 @@ import AutoRouter from './components/autoRouter/index'
 import BossInfo from './container/bossinfo/index'
 import GenuisInfo from './container/geniusinfo/geniusinfo'
 import Dashboard from './components/Dashboard/Dashboard'
+import Chat from './components/chat/chat'
 
 class Router extends Component{
 
@@ -20,6 +21,7 @@ class Router extends Component{
                         <Route path='/bossinfo' component={BossInfo} />
                         <Route path='/login' component={Login}></Route>
                         <Route path='/register' component={Register}></Route>
+                        <Route path='/chat/:user' component={Chat}></Route>
                         <Route component={Dashboard}></Route>
                     </Switch>
                 </Fragment>
