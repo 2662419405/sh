@@ -7,7 +7,7 @@ import {
     Grid
 } from 'antd-mobile'
 import { connect } from 'react-redux'
-import { getMsgList, sendMsg, recvMsg } from '../../redux/chat-redux' 
+import { getMsgList, sendMsg, recvMsg, readMsg } from '../../redux/chat-redux' 
 import { getChatId } from '../../util';
 
 class Chat extends Component {
@@ -24,6 +24,11 @@ class Chat extends Component {
             this.props.getList();
             this.props.pullMsg();
         }
+    }
+
+    componentWillUnmount(){
+        const to = this.props.match.params.user
+        this.props.readMsg(to);
     }
 
     fixPao(){
@@ -148,6 +153,9 @@ const mapDispatchToProp = dispatch =>{
         },
         pullMsg(){
             dispatch(recvMsg())
+        },
+        readMsg(to){
+            dispatch(readMsg(to))
         }
     }
 }

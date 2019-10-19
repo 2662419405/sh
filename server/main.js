@@ -12,8 +12,9 @@ const io = require('socket.io')(server)
 io.on('connection',function(socket){
     socket.on('sendMsg',function(data){
         const { form, to, msg } = data;
+        const create_time = new Date().getTime();
         const chatid = [form,to].sort().join('_')
-        Chat.create({chatid,form,to,content:msg},function(err,doc){
+        Chat.create({chatid,form,to,content:msg,create_time},function(err,doc){
             io.emit('recvmsg',Object.assign({},doc))
         })
         // console.log(data)

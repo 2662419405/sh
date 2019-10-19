@@ -40,16 +40,47 @@
 ### 项目简述
 
 > 这是一个React项目,你的电脑要具备Node(8.0)以上
-#### 所使用的node包文件的阐述
+#### 所使用的node包技术阐述
 * **(按需加载问题)** 使用`babel-plugin-import`包
+
 * **(由于跨域问题)** 在`package.json`中使用`proxy`配置
+
+  * 需要详细说明一下,安装完这个包,需要在`package.json`文件中配置
+
+  * ```js
+    "proxy": "http://localhost:9093"
+    ```
+
 * **(关于密码加密问题)** 使用`utility`包
+
 * **(关于cookie存储方面的问题)** 使用`browser-cookies`包
+
 * **(方面node中获取请求的数据)** 使用`body-parser`包
+
 * **(在React中发送请求)** 使用`axios`包
+
 * **(加强react中组件之间的通信类型)** 使用`prop-types`包
+
 * **(React和Redux之间的数据通信)** 使用`react-redux`包
+
 * **(React中的路由配置)** 使用`react-router`包
+
+* **(关于Redux的装饰器)**使用`babel-plugin-transform-decorators-legacy`包
+
+  * 这里需要详细说明一下,安装完这个包之后,需要在`package.json`文件中中babel上加入
+
+  * `"plugins": ["transform-decorators-legacy"]`
+
+  * ```json
+    "babel": {
+        "presets": [
+            "react-app"
+        ],
+        "plugins": [
+            "transform-decorators-legacy"
+        ]
+    },
+    ```
 
 ### 数据库方向
 
@@ -64,3 +95,4 @@
 * 后台文件在`server`
 
 ### 关于使用
+

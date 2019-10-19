@@ -7,7 +7,7 @@ const MSG_LIST = 'MSG_LIST'
 //读取信息
 const MSG_RECV = 'MSG_RECV'
 //表示已读
-// const MSG_READ = 'MSG_READ'
+const MSG_READ = 'MSG_READ'
 
 const initState = {
     chatmsg: [],
@@ -22,7 +22,12 @@ export function chat( state = initState, action ){
         case MSG_RECV:
             const n = action.payload.to === action.userid?1:0
             return {...state,chatmsg:[...state.chatmsg,action.payload],unread:state.unread+n}
-        // case MSG_READ:
+        case MSG_READ:
+            const { form } = action.payload
+            return {...state,unread:state.unread-action.payload.num,chatmsg:state.chatmsg.map(v=>{
+                v.read = v.form === form ? true : v.read;
+                return v;
+            })}
         default: 
             return state
     }
@@ -43,6 +48,7 @@ function revcMsg(data,userid){
     }
 }
 
+//接收消息
 export function recvMsg(){
     return (dispatch,getState)=>{
         socket.on('recvmsg',function(data){
@@ -52,12 +58,14 @@ export function recvMsg(){
     }
 }
 
+//发送消息
 export function sendMsg({form,to,msg}){
     return dispatch=>{
         return socket.emit('sendMsg',{form,to,msg})
     }
 }
 
+//获取聊天信息
 export function getMsgList(){
     return (dispatch,getState)=>{
         Axios.get('/user/getMsgList')
@@ -67,5 +75,25 @@ export function getMsgList(){
                 dispatch(msgList(res.data.msgs,res.data.users,userid))
             }
         })
+    }
+}
+
+function msgRead({form,userid,msg}){
+    return {
+        type: MSG_READ,
+        payload: { form, userid, msg }
+    }
+}
+
+//更新消息
+export function readMsg(form){
+    return (dispatch,getState)=>{
+        Axios.post('/user/readmsg',{form})
+            .then((res)=>{
+                const userid = getState().User._id;
+                if(res.status === 200 && res.data.code === 0){
+                    dispatch(msgRead({userid,form,msg:res.data.num}))
+                }
+            })
     }
 }

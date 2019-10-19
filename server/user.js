@@ -91,6 +91,20 @@ Router.get('/getMsgList',function(req,res){
     })
 })
 
+//更新消息
+Router.post('/readmsg',(req,res)=>{
+    const userid = req.cookies.userid;
+    const { form } = req.body;
+    Chat.update({form,to:userid},{'$set':{read:true}},
+        {'multi':true}
+        ,function(err,doc){
+        if(!err){
+            return res.json({code:0,num:doc.nModified})
+        }
+        return res.json({code:1,msg:'修改失败'})
+    })
+})
+
 //加密MD5
 function md5pwd(pwd){
     const salt = 'qwe123~~-!@#$%^&&*()sunhang'
