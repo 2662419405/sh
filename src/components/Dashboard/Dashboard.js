@@ -7,10 +7,7 @@ import Boss from '../boss/boss'
 import Genius from '../genius/genius'
 import User from '../user/user'
 import { getMsgList, recvMsg } from '../../redux/chat-redux' 
-
-function Msg(){
-    return <h2>msg</h2>
-}
+import Msg from '../msg/msg'
 
 class Dashboard extends Component {
 
