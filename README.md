@@ -65,6 +65,8 @@
 
 * **(React中的路由配置)** 使用`react-router`包
 
+* **(React中的动画)** 使用`rc-queue-anim`包
+
 * **(关于Redux的装饰器)**使用`babel-plugin-transform-decorators-legacy`包
 
   * 这里需要详细说明一下,安装完这个包之后,需要在`package.json`文件中中babel上加入

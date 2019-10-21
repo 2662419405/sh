@@ -52,6 +52,7 @@
     "postcss-preset-env": "6.7.0",
     "postcss-safe-parser": "4.0.1",
     "prop-types": "^15.6.0",
+    "rc-queue-anim": "^1.8.2",
     "react": "^16.10.2",
     "react-app-polyfill": "^1.0.4",
     "react-dev-utils": "^9.1.0",
@@ -80,10 +81,19 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "server": "nodemon server/main.js"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app", 
+    "rules": {
+      "componentWillMount": [
+        0
+      ],
+      "componentWillReceiveProps": [
+        0
+      ]
+    }
   },
   "browserslist": {
     "production": [

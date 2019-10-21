@@ -5,6 +5,7 @@ const userRouter = require('./user')
 const Model = require('./model')
 const Chat = Model.getNames('chat')
 const app = express();
+const path = require('path')
 
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
@@ -22,9 +23,18 @@ io.on('connection',function(socket){
     })
 })
 
+
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use('/user',userRouter)
+app.use(function(req,res,next){
+    console.log(req.url)
+    if(req.url.startsWith('/user/')||req.url.startsWith('/static/')){
+        return next()
+    }
+    return res.sendFile(path.resolve('build/index.html'))
+})
+app.use('/',express.static(path.resolve('build')))
 
 server.listen('9093', () => {
     console.log('服务器运行在9093端口上')
