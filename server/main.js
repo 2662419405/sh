@@ -28,7 +28,6 @@ app.use(cookieParser())
 app.use(bodyParser.json())
 app.use('/user',userRouter)
 app.use(function(req,res,next){
-    console.log(req.url)
     if(req.url.startsWith('/user/')||req.url.startsWith('/static/')){
         return next()
     }
