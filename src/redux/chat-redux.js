@@ -53,7 +53,6 @@ export function recvMsg(){
     return (dispatch,getState)=>{
         socket.on('recvmsg',function(data){
             const userid = getState().User._id
-            console.log("收到的消息"+data)
             dispatch(revcMsg(data,userid))
         })
     }

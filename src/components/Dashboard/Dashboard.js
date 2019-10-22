@@ -64,7 +64,7 @@ class Dashboard extends Component {
                     }
                 </NavBar>
                 <div className="content">
-                    <QueueAnim type="scale" duration={800}>
+                    <QueueAnim type="alpha" duration={800}>
                         <Route path={page.path} key={page.path} component={page.component}></Route>
                     </QueueAnim>
                 </div>
