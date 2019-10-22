@@ -70,7 +70,7 @@ class Chat extends Component {
                 }}>
                     {users[user].name}
                 </NavBar>
-                <QueueAnim delay={100}>
+                <QueueAnim delay={100} type="alpha">
                     {
                         chatmsgs.map(v=>{
                             const avatar = require(`../img/${users[v.form].avatar}.png`)
