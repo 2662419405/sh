@@ -25,6 +25,11 @@ class Login extends Component{
                     >用户名</InputItem>
                     <WhiteSpace />
                     <InputItem
+                        onKeyUp={(e)=>{
+                            if(e.keyCode===13){
+                                handlerLogin(this.props.state)
+                            }
+                        }}
                         onChange={v=>this.props.handleChange('pwd',v)}
                     type="password">密码</InputItem>
                 </List>

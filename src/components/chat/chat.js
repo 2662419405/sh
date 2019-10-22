@@ -25,6 +25,7 @@ class Chat extends Component {
             this.props.getList();
             this.props.pullMsg();
         }
+        // this.handleClick()
     }
 
     componentWillUnmount(){
@@ -36,6 +37,10 @@ class Chat extends Component {
         setTimeout(function(){
             window.dispatchEvent(new Event('resize'))
         },0)
+    }
+
+    handleClick = () => {
+        this.inputRef.focus();
     }
 
     handleSubmit = ()=>{
@@ -62,40 +67,49 @@ class Chat extends Component {
             return null;
         }
         const chatid = getChatId(user,this.props.user._id)
-        const chatmsgs = this.props.chat.chatmsg.filter(v=>v.chatid===chatid)
+        let chatmsgs = this.props.chat.chatmsg.filter(v=>v.chatid===chatid).slice(-20)
+
         return (
-            <div id="chat-page">   
+            <div id="chat-page" ref="chat">   
                 <NavBar mode="dark" icon={<Icon type="left" />} onLeftClick={()=>{
                     this.props.history.goBack()
                 }}>
                     {users[user].name}
                 </NavBar>
-                <QueueAnim delay={100} type="alpha">
-                    {
-                        chatmsgs.map(v=>{
-                            const avatar = require(`../img/${users[v.form].avatar}.png`)
-                            return v.form===user?(
-                                <List key={v._id}>
-                                    <Item
-                                        thumb={avatar}
-                                    >{v.content}</Item>
-                                </List>
-                            ):(
-                                <List key={v._id}>
-                                    <Item 
-                                        extra={<img alt="头像" src={avatar} />}
-                                        className="chat-me"
-                                    >{v.content}</Item>
-                                </List>
-                            )
-                        })
-                    }
-                </QueueAnim>
+                <div className='chat-message'>
+                    <QueueAnim delay={100} type="scale" >
+                        {
+                            chatmsgs.map(v=>{
+                                const avatar = require(`../img/${users[v.form].avatar}.png`)
+                                return v.form===user?(
+                                    <List key={v._id}>
+                                        <Item
+                                            thumb={avatar}
+                                        >{v.content}</Item>
+                                    </List>
+                                ):(
+                                    <List key={v._id}>
+                                        <Item 
+                                            extra={<img alt="头像" src={avatar} />}
+                                            className="chat-me"
+                                        >{v.content}</Item>
+                                    </List>
+                                )
+                            })
+                        }
+                    </QueueAnim>
+                </div>
                 <div
                     className='stick-footer'
                 >
                     <List>
                         <InputItem
+                            onKeyUp={(e)=>{
+                                if(e.keyCode===13){
+                                    this.handleSubmit()
+                                }
+                            }}
+                            ref={el => this.inputRef = el}
                             placeholder="请输入聊天内容"
                             value={this.state.text}
                             onChange={(v)=>this.setState({
@@ -151,6 +165,9 @@ const mapDispatchToProp = dispatch =>{
             dispatch(getMsgList())
         },
         sendmsg({form,to,msg}){
+            if(!msg){
+                return false
+            }
             dispatch(sendMsg({form,to,msg}))
         },
         pullMsg(){
