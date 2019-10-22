@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { NavBar } from 'antd-mobile'
 import NavLinkBar from '../navlink/navlink'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import Boss from '../boss/boss'
 import Genius from '../genius/genius'
 import User from '../user/user'
@@ -56,7 +56,7 @@ class Dashboard extends Component {
             }
         ]
         const page = navList.find(v=>v.path===pathname)
-        return (
+        return page?(
             <div>
                 <NavBar mode="dark" className="fixed-header">
                     {
@@ -70,7 +70,7 @@ class Dashboard extends Component {
                 </div>
                 <NavLinkBar data={navList}></NavLinkBar>
             </div>
-        )
+        ):<Redirect to='/login'></Redirect>
     }
 }
 

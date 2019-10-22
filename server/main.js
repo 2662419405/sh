@@ -23,7 +23,6 @@ io.on('connection',function(socket){
     })
 })
 
-
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use('/user',userRouter)

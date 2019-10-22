@@ -83,6 +83,20 @@
         ]
     },
     ```
+  
+* **(配置服务端渲染)** 使用`babel-cli`包
+
+  * 安装
+
+  * ```js
+    npm install babel-cli --save 
+    ```
+
+  * 配置package.json
+
+  * ```js
+    "server": "set NODE_ENV=test&&nodemon --exec babel-node -- server/main.js"
+    ```
 
 ### 数据库方向
 
@@ -97,4 +111,6 @@
 * 后台文件在`server`
 
 ### 关于使用
+
+* 如何启动
 

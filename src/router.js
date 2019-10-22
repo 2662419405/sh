@@ -10,8 +10,21 @@ import Chat from './components/chat/chat'
 
 class Router extends Component{
 
+    constructor(props){
+        super(props);
+        this.state={
+            hasError: false
+        }
+    }
+
+    componentDidCatch(err,info){
+        this.setState({
+            hasError: true
+        })
+    }
+
     render(){
-        return(
+        return this.state.hasError?<h2>页面出错了</h2>:(
             <BrowserRouter>
                 <Fragment>
                     {/* {验证是否登录,是牛人还是BOSS} */}
