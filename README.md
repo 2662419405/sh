@@ -112,5 +112,24 @@
 
 ### 关于使用
 
-* 如何启动
+* 需要电脑有 mongo 和 react 还有node环境
 
+* 首先:下载本项目
+
+* ```js
+  // 第一种方式
+  npm install //安装包依赖
+  npm run build //打包项目
+  npm run server //启动  打开浏览器输入localhost:9093
+  ```
+
+* ```js
+  // 第二种方式
+  npm install //安装包依赖
+  cd server  //进入后台
+  node main.js  //运行后台
+  //再打开一个cmd
+  npm run start //启动  打开浏览器输入localhost:3000
+  ```
+
+* 感觉支持  喜欢的朋友记得给个star
