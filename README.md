@@ -281,7 +281,7 @@ axios.interceptors.response.use(function(config){
 
 如果还有bug和建议,欢迎告诉我  (͏ ˉ ꈊ ˉ)✧˖°
 
-![sh](http://studyit.club/Study/qrcode_1571889032221.jpg)
+![sh](http://studyit.club/Study/qq.jpg)
 
 
 
