@@ -4,7 +4,11 @@
 
 ![sh](http://studyit.club/Study/sh.jpg)
 
-自己也发布过几个小型的demo,虽然没人看(手动滑稽), 但还是喜欢与大家共同学习进步
+自己也发布过几个小型的demo,虽然没人看(๑•ૅૄ•๑), 但还是喜欢与大家共同学习进步
+
+测试网址 --------->  [网址](http://shtodream.cn:9093)
+
+
 
 ### 介绍
 
@@ -41,6 +45,17 @@
 
 > 这是一个React项目,你的电脑要具备Node(8.0)以上
 #### 所使用的node包技术阐述
+
+![sh](http://studyit.club/Study/Snipaste_2019-10-24_11-25-04.png)
+
+> 前端主要采用了React全家桶，没什么多说的，脚手架构建项目，react-router控制路由，axios进行前后端交互。后端是基于node搭的服务，用的是express。我为什么不用koa呢，纯粹是图方便，因为koa不熟（捂脸）。聊天最重要的当然是通信，项目用[socket.io](https://www.w3cschool.cn/socket/socket-1olq2egc.html)来进行前后端通信。
+
+
+
+*=============分割线  下面是每个包的详细解释===============*
+
+
+
 * **(按需加载问题)** 使用`babel-plugin-import`包
 
 * **(由于跨域问题)** 在`package.json`中使用`proxy`配置
@@ -98,19 +113,150 @@
     "server": "set NODE_ENV=test&&nodemon --exec babel-node -- server/main.js"
     ```
 
-### 数据库方向
+
+
+* 目录结构
+
+```js
+    // 项目结构
+    ├─build
+    ├─config
+    ├─data
+    │  ├─MongoDB            				  // 数据库解释    
+    ├─server  								  // 后台
+    │  ├─model          					  // 数据库原型     
+    │  ├─main          				  		  // 后台文件入口  
+    │  ├─user          				 		  // 后台接口api    
+    ├─src
+    │  ├─components                           // 全局组件
+    │  │  ├─autoRouter
+    │  │  ├─avatar-select
+    │  │  ├─boss
+    │  │  ├─chat
+    │  │  ├─Dashboard
+    │  │  ├─genius
+    │  │  ├─img
+    │  │  ├─logo
+    │  │  ├─msg
+    │  │  ├─navlink
+    │  │  ├─shForm
+    │  │  ├─user
+    │  │  └─chatCard
+    │  ├─router                                // 路由
+    │  ├─index                                 // 入口	
+    │  ├─util                                  // 方法
+    │  ├─config                                // 请求拦截
+    │  └─container
+    │      ├─bossinfo   					   // boss
+    │      ├─login          				   // 登录
+    │      ├─register                          // 注册
+    │      └─genuisinfo                        // 牛人
+
+```
+
+
+
+> 注册时, 进行密码MD5加密
+
+
+
+``` js
+// md5加密
+function md5pwd(pwd){
+    const salt = 'qwe123~~-!@#$%^&&*()sunhang'
+    return utility.md5(utility.md5(salt+pwd))
+}
+```
+
+
+
+> 进行登录以及cookie的存储
+
+
+
+```js
+//进行注册
+Router.post('/register',(req,res)=>{
+    const { user,pwd,type } = req.body
+    User.findOne({user},(err,doc)=>{
+        if(doc){
+            return res.json({code:1,msg:'用户名存在'})
+        }
+        const userModel = new User({user,type,pwd:md5pwd(pwd)})
+        userModel.save(function(e,d){
+            if(err){
+                return res.json({code:2,msg:'后端出错了'})
+            }
+            const {user,type,_id} = d
+            res.cookie('userid',_id)
+            return res.json({code:3,msg:'注册成功',data:{user,type,_id}})
+        })
+    })
+})
+```
+
+
+
+> axios拦截器的制作
+
+
+
+```js
+import axios from 'axios'
+import { Toast } from 'antd-mobile'
+
+//拦截请求
+axios.interceptors.request.use(function(config){
+    Toast.loading('加载中',0);
+    return config;
+})
+
+//拦截响应
+axios.interceptors.response.use(function(config){
+    Toast.hide();
+    return config;
+})
+```
+
+
+
+* 登录和注册效果展示
+
+![sh](http://studyit.club/Study/register.gif)
+
+* 双方聊天展示
+
+![sh](http://studyit.club/Study/chat.gif)
+
+
+
+* 消息的更新和排序
+
+![sh](http://studyit.club/Study/clear.gif)
+
+
+
+* 手机端表情包展示
+
+![sh](http://studyit.club/Study/Screenshot_2019-10-24-14-14-39-53_cb819d8fa60af39.jpg)
+
+> 手机端的表情包就是可以用的,现在的表情包都可以直接使用了,不同代码了,很神奇
+
+
+
+### 后台方向
 
 - 由于本人主要是面向前端,数据库就是`MongoDB`
 - 数据库的使用请参照`data`目录下面的`mongodb.md`
 * 数据库方面使用 **(mongoose)**
 
-### 后台方向
-
 - 后台主要使用`node`的`express`
 
 * 后台文件在`server`
 
-### 关于使用
+
+
+# 使用方式
 
 * 需要电脑有 mongo 和 react 还有node环境
 
@@ -132,4 +278,13 @@
   npm run start //启动  打开浏览器输入localhost:3000
   ```
 
-* 感觉支持  喜欢的朋友记得给个star
+
+如果还有bug和建议,欢迎告诉我  (͏ ˉ ꈊ ˉ)✧˖°
+
+![sh](http://studyit.club/Study/qrcode_1571889032221.jpg)
+
+
+
+>  一开始还是遇到了很多的坑,第一次使用antd-mobile这个库,最主要的坑,还是对于项目的上线运行,毕竟个人不太擅长服务器的使用,在配置Nginx的时候卡了很久,为了性能优化,SSR渲染也是花了很大的心血,感觉里面的坑太多了,总的来说收获还是很大的,后期我还会画时间进行界面上的美化
+>
+> 感觉支持  喜欢的朋友记得给个star  
