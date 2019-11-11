@@ -24,7 +24,7 @@ class Chat extends Component {
         if(!this.props.chat.chatmsg.length){
             this.props.getList();
             this.props.pullMsg();
-        }
+        } 
         // this.handleClick()
     }
 
