@@ -8,7 +8,14 @@
 
 测试网址 --------->  [网址](http://shtodream.cn:9093)
 
-
+<p align="center" style="margin:50px 0;">
+	<img src="https://img.shields.io/badge/language-html%20%7C%20javascript-blue" />
+    <img src="https://img.shields.io/badge/build-passing-green"  />
+    <img src="https://img.shields.io/badge/version-v1.0-informational" />
+    <img src="https://img.shields.io/badge/codecov-25-red" />
+    <img src="https://img.shields.io/badge/platform-ios%20%7C%20android%20%7C%20widdow%20%7C%20ipad-inactive"  />
+    <img src="https://img.shields.io/badge/weibo-%40SH-blueviolet"  />
+</p>
 
 ### 介绍
 
