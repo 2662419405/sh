@@ -1,12 +1,11 @@
 # 简招 (React+Node+MongoDB)
 
-> 开始制作的时间是从 2019-10-10 起至今
+> 开始制作的时间是从 2019-10-10 起至 2019-11-06
 
-![sh](http://studyit.club/Study/sh.jpg)
 
-自己也发布过几个小型的demo,虽然没人看(๑•ૅૄ•๑), 但还是喜欢与大家共同学习进步
+自己也发布过几个小型的demo,虽然没人看๑•ૅૄ•๑), 但还是喜欢与大家共同学习进步
 
-测试网址 --------->  [网址](http://shtodream.cn:9093)
+测试网址 --------->  [网址](http://shtodream.cn:9093)(目前bug,注册之后请重新登录方可聊天)
 
 <p align="center" style="margin:50px 0;">
 	<img src="https://img.shields.io/badge/language-html%20%7C%20javascript-blue" />
@@ -23,9 +22,9 @@
 
 计划制作:
 
-- 使用React的`Antd-mobile`支持手机端端制作
-- `ReactNative`独立开发`App`端和`IOS`
-- 有人肯定会很好奇,PC和手机为何要制作两次,主要是本人很萌新,想要学习更多的框架
+- 使用React的`Antd-mobile`支持手机端端制作 √
+- `ReactNative`独立开发`App`端和`IOS` ×
+- 有人肯定会很好奇,PC和手机为何要制作两次,主要是本人很萌新,想要学习更多的框架 ×
 
 > 只有学习更多的框架,并且锻炼更好的自学能力,才能更上一层楼
 
@@ -50,10 +49,10 @@
 
 ### 项目简述
 
-> 这是一个React项目,你的电脑要具备Node(8.0)以上
+> 这是一个Reacts项目,你的电脑要具备Node(8.0)以上
 #### 所使用的node包技术阐述
 
-![sh](http://studyit.club/Study/Snipaste_2019-10-24_11-25-04.png)
+![sh](https://studyit.club/Study/Snipaste_2019-10-24_11-25-04.png)
 
 > 前端主要采用了React全家桶，没什么多说的，脚手架构建项目，react-router控制路由，axios进行前后端交互。后端是基于node搭的服务，用的是express。我为什么不用koa呢，纯粹是图方便，因为koa不熟（捂脸）。聊天最重要的当然是通信，项目用[socket.io](https://www.w3cschool.cn/socket/socket-1olq2egc.html)来进行前后端通信。
 
@@ -229,23 +228,23 @@ axios.interceptors.response.use(function(config){
 
 * 登录和注册效果展示
 
-![sh](http://studyit.club/Study/register.gif)
+![sh](https://studyit.club/Study/register.gif)
 
 * 双方聊天展示
 
-![sh](http://studyit.club/Study/chat.gif)
+![sh](https://studyit.club/Study/chat.gif)
 
 
 
 * 消息的更新和排序
 
-![sh](http://studyit.club/Study/clear.gif)
+![sh](https://studyit.club/Study/clear.gif)
 
 
 
 * 手机端表情包展示
 
-![sh](http://studyit.club/Study/Screenshot_2019-10-24-14-14-39-53_cb819d8fa60af39.jpg)
+![sh](https://studyit.club/Study/Screenshot_2019-10-24-14-14-39-53_cb819d8fa60af39.jpg)
 
 > 手机端的表情包就是可以用的,现在的表情包都可以直接使用了,不同代码了,很神奇
 
@@ -288,7 +287,7 @@ axios.interceptors.response.use(function(config){
 
 如果还有bug和建议,欢迎告诉我  (͏ ˉ ꈊ ˉ)✧˖°
 
-![sh](http://studyit.club/Study/qq.jpg)
+![sh](https://studyit.club/Study/qq.jpg)
 
 
 
