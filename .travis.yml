@@ -1,0 +1,19 @@
+language: node_js
+
+node_js:
+  - 10
+
+# Travis CI cache
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install
+
+script:
+  - npm run build
+
+branches:
+  only:
+    - master
